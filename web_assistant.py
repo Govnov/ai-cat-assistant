@@ -38,7 +38,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ===== API-ключ из секрета =====
-client = OpenAI(api_key=st.secrets["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"])
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # ===== Заголовок =====
 st.title("Привет, я ассистент-котик!")
