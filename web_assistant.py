@@ -17,25 +17,34 @@ cat_right = load_gif_base64("assets/cat_right.gif")
 
 # ===== CSS для котиков =====
 st.markdown(f"""
+    st.markdown(
+    f"""
     <style>
-        .cat-left {{
-            position: fixed;
-            left: 0;
-            top: 25%;
-            width: 240px;
-            z-index: 1000;
+    .cat-img {{
+        width: 300px;
+    }}
+
+    @media (max-width: 600px) {{
+        .cat-img {{
+            width: 120px;
         }}
-        .cat-right {{
-            position: fixed;
-            right: 0;
-            top: 25%;
-            width: 240px;
-            z-index: 1000;
-        }}
+    }}
+
+    .cat-container {{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }}
     </style>
-    <img src="data:image/gif;base64,{cat_left}" class="cat-left">
-    <img src="data:image/gif;base64,{cat_right}" class="cat-right">
-""", unsafe_allow_html=True)
+
+    <div class="cat-container">
+        <img src="data:image/gif;base64,{left_cat}" class="cat-img" />
+        <img src="data:image/gif;base64,{right_cat}" class="cat-img" />
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # ===== API-ключ из секрета =====
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
